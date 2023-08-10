@@ -15,8 +15,8 @@ export const dateFormater = (date) => {
   const formatedDate = {
     date: `${year}-${monthTxt}-${dayTxt}`,
     hour: `${hourTxt}:${minsTxt}:${secsTxt}`,
-    x: hourTxt[0],
-    y: hourTxt[1],
+    seed: hourTxt,
+    seconds: secs
   }
 
   return formatedDate;
