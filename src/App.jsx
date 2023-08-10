@@ -16,7 +16,7 @@ function App() {
         con 0 y 1, y luego cada número siguiente es la suma de los dos números
         anteriores. Así que la serie comienza: 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
       </p>
-      <p>{memoFibonacci[date.seed].slice(0, date.seconds).join(", ")}</p>
+      <p>{memoFibonacci[date.minutes].slice(0, date.seconds).join(", ")}</p>
     </div>
   )
 }
