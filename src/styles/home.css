@@ -1,0 +1,9 @@
+.home_container {
+  padding: 20px;
+  align-items: center;
+  max-width: 745px;
+}
+
+.home_description {
+  text-align: center;
+}
