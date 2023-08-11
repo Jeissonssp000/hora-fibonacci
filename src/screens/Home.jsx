@@ -12,7 +12,7 @@ export default function Home() {
   const list = memoFibonacci[date.minutes].slice(0, date.seconds)
 
   const send = () => sendEmail({
-    email: "chamogomez@gmail.com",
+    email: "jeissonssp@gmail.com",
     date: `${date.date} ${date.hour}`,
     list: list.join(", ")
   })

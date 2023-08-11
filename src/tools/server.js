@@ -1,5 +1,5 @@
 export const sendEmail = (jsonData) => {
-  fetch('http://localhost:3000/api/send-email', {
+  fetch('https://hora-fibonacci-server.onrender.com/api/send-email', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', },
     body: JSON.stringify(jsonData),
