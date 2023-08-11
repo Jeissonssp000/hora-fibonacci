@@ -1,6 +1,7 @@
 import "../styles/home.css"
 import { InfoContext } from '../context/InfoContext';
 import FibonacciList from "../components/FibonacciList";
+import { sendEmail } from "../tools/server";
 
 export default function Home() {
   const { date, memoFibonacci } = InfoContext()
@@ -10,22 +11,7 @@ export default function Home() {
 
   const list = memoFibonacci[date.minutes].slice(0, date.seconds)
 
-  const sendDataToServer = () => {
-    const jsonData = { message: 'Hola desde React' };
-
-    fetch('http://localhost:3000/api/enviar-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', },
-      body: JSON.stringify(jsonData),
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('Error al enviar el objeto JSON:', error);
-      });
-  };
+  const send = () => sendEmail({ email: "jeissonssp@gmail.com" })
 
   return (
     <div className="home_container full vertical">
@@ -49,7 +35,7 @@ export default function Home() {
       <FibonacciList list={list} seconds={date.seconds} />
       <div className="flex">
         <button onClick={date.pauseSeconds}>{date.pause ? "Continuar" : "Pausar"} serie</button>
-        <button onClick={sendDataToServer}>Enviar correo</button>
+        <button onClick={send}>Enviar correo</button>
       </div>
       <FibonacciList list={list} />
     </div>
