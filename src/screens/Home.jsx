@@ -38,7 +38,7 @@ export default function Home() {
       </p>
       <FibonacciList list={list} seconds={date.seconds} />
       <div className="flex">
-        <button onClick={date.pauseSeconds}>{date.pause ? "Continuar" : "Pausar"} serie</button>
+        <button onClick={date.pauseTime}>{date.pause ? "Continuar" : "Pausar"} serie</button>
         <button onClick={send}>Enviar correo</button>
       </div>
       <FibonacciList list={list} />

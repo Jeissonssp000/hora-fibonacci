@@ -10,10 +10,12 @@ export default function useActualDate() {
     const newDateInfo = dateFormater(new Date());
     setDate(newDateInfo)
   }, 1000)
-
-  const pauseSeconds = () => {
-    setPause(o => o ? false : date.seconds)
+  
+  const pauseTime = () => {
+    setPause(o => o ? false : { ...date })
   }
 
-  return { ...date, seconds: pause || date.seconds, pauseSeconds, pause }
+  const info = pause || date
+
+  return { ...info, pauseTime, pause: !!pause }
 }
