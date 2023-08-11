@@ -10,6 +10,23 @@ export default function Home() {
 
   const list = memoFibonacci[date.minutes].slice(0, date.seconds)
 
+  const sendDataToServer = () => {
+    const jsonData = { message: 'Hola desde React' };
+
+    fetch('http://localhost:3000/api/enviar-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', },
+      body: JSON.stringify(jsonData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error al enviar el objeto JSON:', error);
+      });
+  };
+
   return (
     <div className="home_container full vertical">
       <h2>Bienvenid@</h2>
@@ -32,6 +49,7 @@ export default function Home() {
       <FibonacciList list={list} seconds={date.seconds} />
       <div className="flex">
         <button onClick={date.pauseSeconds}>{date.pause ? "Continuar" : "Pausar"} serie</button>
+        <button onClick={sendDataToServer}>Enviar correo</button>
       </div>
       <FibonacciList list={list} />
     </div>
