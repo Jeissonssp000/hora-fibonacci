@@ -1,4 +1,7 @@
 require('dotenv').config();
+
+const fs = require('fs');
+const path = require('path');
 const nodemailer = require('nodemailer');
 
 const sendEmail = async (req, res) => {
@@ -12,11 +15,18 @@ const sendEmail = async (req, res) => {
     },
   });
 
+  // Cargar la plantilla HTML
+  const parentDir = path.dirname(__dirname);
+  const templatePath = path.join(parentDir, 'email_templates', 'email_template.html');
+  const template = fs.readFileSync(templatePath, 'utf-8');
+
+  const html = template.replace('{{ date }}', data.date).replace('{{ list }}', data.list);
+
   const mailOptions = {
-    from: 'jeisson.pruebas.correo@gmail.com',
+    from: process.env.GMAIL_USER,
     to: data.email,
-    subject: 'Asunto del correo',
-    text: 'Contenido del correo',
+    subject: 'El resultado del calculo fibonacci',
+    html: html,
   };
 
   try {
